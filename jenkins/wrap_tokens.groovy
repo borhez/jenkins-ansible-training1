@@ -3,13 +3,13 @@
             checkout scm
             
             rootDir = pwd()
-            println $rootDir
+            println "$rootDir"
 
 
             stage("MyStage1") {
                 echo "Hello"
             }
-            
+
         } catch (e) {
             print(e)
             throw e
