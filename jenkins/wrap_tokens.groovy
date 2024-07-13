@@ -14,7 +14,7 @@
                 // ansibleTool = tool name: 'ansible29-py3', type: 'org.jenkinsci.plugins.ansible.AnsibleInstallation'
                 // "${ansibleTool}/ansible-playbook -v -i ${ANSIBLE_INVENTORY} --limit ${LIMIT} --ask-vault-pass ${PLAYBOOK} --tags ${TAGS} ${EXTRA}"
                     sh 'pwd; ls -lah'
-                    sh 'ansible -i inventory.ini master -u ansible -m shell -a "echo HELLO FFFFASFF! > test.txt"'
+                    sh 'ansible -i inventory.ini master -u ansible -m shell -a \"echo HELLO FFFFASFF! > test.txt\"'
                 }
             }
 
