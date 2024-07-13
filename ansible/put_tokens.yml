@@ -1,0 +1,45 @@
+---
+- name: Put tokens
+  hosts: master
+  gather_facts: false
+  become: true
+  become_user: ansible
+  become_method: sudo
+  any_errors_fatal: true
+  vars:
+    runDir: /home/ansible/testDir1
+  tasks:
+    - name: Create dir
+      file:
+        path: "{{ runDir }}"
+        state: directory
+        mode: 0755
+
+    - name: Create dir
+      file:
+        path: "{{ runDir }}/token"
+        state: directory
+        mode: 0755
+
+    - name: Create and fill token file
+      copy:
+        content: "asdff32kk345LJl43k9kj"
+        dest: "{{ runDir }}/token/gpfdist1.wrap"
+        mode: '0755'
+
+    - name: Create and fill script.sh
+      copy:
+        content: |
+          #!/bin/bash
+          scp {{ token_path }} ansible@{{ ip }}"
+        dest: "{{ runDir }}/script.sh"
+        mode: '0755'
+      vars:
+        token_path: "{{ runDir }}/token/gpfdist1.wrap"
+        ip: "172.20.0.5"
+
+    - name: run script 
+      shell:
+        cmd: |
+          ./script.sh
+      chdir: "{{ runDir }}"
