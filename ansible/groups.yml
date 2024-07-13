@@ -1,0 +1,12 @@
+all:
+  children:
+    greenplum_cluster:
+      children:
+        masters:
+          children:
+            master:
+            standbymaster:
+        segments:
+
+
+

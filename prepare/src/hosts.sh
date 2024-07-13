@@ -1,8 +1,9 @@
 #!/bin/bash
 echo "start file hosts.sh"
 N_HOSTS=$1
-NET1=$2
-PATH_TO_FILE=$(realpath ./src/container-hosts.sh)
+CONTAINERS_NET=$2
+# PATH_TO_FILE=$(realpath ./src/container-hosts.sh)
+PATH_TO_FILE="./src/container-hosts.sh"
 
 n=1
 while [ $n -le $N_HOSTS ]
