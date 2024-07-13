@@ -1,0 +1,19 @@
+segments:
+	host1:
+		ip: 172.20.0.2
+
+	host2:
+		ip: 172.20.0.3
+
+	host3:
+		ip: 172.20.0.4
+
+
+master:
+	host4:
+		ip: 172.20.0.5
+
+
+standbymaster:
+	host5:
+		ip: 172.20.0.6
