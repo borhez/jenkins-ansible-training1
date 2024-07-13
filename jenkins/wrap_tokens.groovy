@@ -1,6 +1,6 @@
     node{
         try {
-            checkout scm
+            // checkout scm
             
             rootDir = pwd()
             println "$rootDir"
