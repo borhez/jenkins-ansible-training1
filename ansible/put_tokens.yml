@@ -31,15 +31,14 @@
       copy:
         content: |
           #!/bin/bash
-          scp {{ token_path }} ansible@{{ ip }}"
+          scp {{ token_path }} ansible@{{ ip }}:
         dest: "{{ runDir }}/script.sh"
         mode: '0755'
       vars:
         token_path: "{{ runDir }}/token/gpfdist1.wrap"
-        ip: "172.20.0.5"
+        ip: "172.20.0.6"
 
     - name: run script 
       shell:
-        cmd: |
-          ./script.sh
-      chdir: "{{ runDir }}"
+        cmd: "./script.sh"
+        chdir: "{{ runDir }}"
