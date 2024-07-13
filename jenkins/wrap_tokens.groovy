@@ -9,9 +9,12 @@
             stage("MyStage1") {
                 echo "Hello"
             }
-            stage("Playbook") {
-            ansibleTool = tool name: 'ansible29-py3', type: 'org.jenkinsci.plugins.ansible.AnsibleInstallation'
-            "${ansibleTool}/ansible-playbook -v -i ${ANSIBLE_INVENTORY} --limit ${LIMIT} --ask-vault-pass ${PLAYBOOK} --tags ${TAGS} ${EXTRA}"
+            dir("ansible") {
+                stage("Playbook") {
+                // ansibleTool = tool name: 'ansible29-py3', type: 'org.jenkinsci.plugins.ansible.AnsibleInstallation'
+                // "${ansibleTool}/ansible-playbook -v -i ${ANSIBLE_INVENTORY} --limit ${LIMIT} --ask-vault-pass ${PLAYBOOK} --tags ${TAGS} ${EXTRA}"
+                    ansible -i inventory.ini master -u ansible -m shell -a "echo HELLO! > test.txt"
+                }
             }
 
         } catch (e) {
