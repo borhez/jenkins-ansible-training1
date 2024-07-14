@@ -11,9 +11,7 @@
             }
             dir("ansible") {
                 stage("Playbook") {
-                // ansibleTool = tool name: 'ansible29-py3', type: 'org.jenkinsci.plugins.ansible.AnsibleInstallation'
-                // "${ansibleTool}/ansible-playbook -v -i ${ANSIBLE_INVENTORY} --limit ${LIMIT} --ask-vault-pass ${PLAYBOOK} --tags ${TAGS} ${EXTRA}"
-                    sh 'ansible-playbook -i inventory.ini'
+                    sh 'ansible-playbook -i inventory.ini put_tokens.yml -u ansible'
                 }
             }
 
